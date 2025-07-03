@@ -1,0 +1,522 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Variables CSS pour le design system moderne Éval'Entreprise */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Couleurs personnalisées Éval'Entreprise */
+  --eval-primary-50: #f0f9ff;
+  --eval-primary-100: #e0f2fe;
+  --eval-primary-200: #bae6fd;
+  --eval-primary-300: #7dd3fc;
+  --eval-primary-400: #38bdf8;
+  --eval-primary-500: #0ea5e9;
+  --eval-primary-600: #0284c7;
+  --eval-primary-700: #0369a1;
+  --eval-primary-800: #075985;
+  --eval-primary-900: #0c4a6e;
+
+  --eval-secondary-50: #faf5ff;
+  --eval-secondary-100: #f3e8ff;
+  --eval-secondary-200: #e9d5ff;
+  --eval-secondary-300: #d8b4fe;
+  --eval-secondary-400: #c084fc;
+  --eval-secondary-500: #a855f7;
+  --eval-secondary-600: #9333ea;
+  --eval-secondary-700: #7c3aed;
+  --eval-secondary-800: #6b21a8;
+  --eval-secondary-900: #581c87;
+
+  --eval-accent-emerald: #10b981;
+  --eval-accent-amber: #f59e0b;
+  --eval-accent-rose: #f43f5e;
+  --eval-accent-indigo: #6366f1;
+
+  /* Espacements */
+  --eval-space-xs: 0.25rem;
+  --eval-space-sm: 0.5rem;
+  --eval-space-md: 1rem;
+  --eval-space-lg: 1.5rem;
+  --eval-space-xl: 2rem;
+  --eval-space-2xl: 3rem;
+  --eval-space-3xl: 4rem;
+
+  /* Ombres modernes */
+  --eval-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --eval-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --eval-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --eval-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --eval-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  /* Transitions */
+  --eval-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --eval-transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --eval-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, var(--eval-primary-50) 0%, var(--eval-secondary-50) 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Typographie moderne */
+  .text-display-2xl {
+    @apply text-6xl font-extrabold leading-tight tracking-tight;
+    background: linear-gradient(135deg, var(--eval-primary-600), var(--eval-secondary-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-display-xl {
+    @apply text-5xl font-extrabold leading-tight tracking-tight;
+  }
+
+  .text-display-lg {
+    @apply text-4xl font-bold leading-tight tracking-tight;
+  }
+
+  .text-display-md {
+    @apply text-3xl font-bold leading-tight tracking-tight;
+  }
+
+  .text-display-sm {
+    @apply text-2xl font-semibold leading-tight tracking-tight;
+  }
+
+  /* Boutons modernes */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 relative overflow-hidden whitespace-nowrap;
+  }
+
+  .btn::before {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full transition-all duration-300;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  }
+
+  .btn:hover::before {
+    @apply left-full;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--eval-primary-600), var(--eval-primary-700));
+    @apply text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--eval-primary-700), var(--eval-primary-800));
+  }
+
+  .btn-secondary {
+    background: linear-gradient(135deg, var(--eval-secondary-600), var(--eval-secondary-700));
+    @apply text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .btn-secondary:hover {
+    background: linear-gradient(135deg, var(--eval-secondary-700), var(--eval-secondary-800));
+  }
+
+  .btn-outline {
+    @apply bg-white/80 text-gray-700 border border-gray-300 backdrop-blur-sm hover:bg-white hover:border-blue-300 hover:text-blue-700 hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-gray-600 hover:bg-gray-100 hover:text-gray-800;
+  }
+
+  /* Cards avec glassmorphism */
+  .card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 rounded-2xl shadow-lg transition-all duration-300 relative overflow-hidden;
+  }
+
+  .card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  }
+
+  .card:hover {
+    @apply -translate-y-1 shadow-2xl border-white/40;
+  }
+
+  .card-header {
+    @apply p-6 border-b border-gray-200;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  .card-footer {
+    @apply p-6 border-t border-gray-200 bg-white/50;
+  }
+
+  /* Formulaires élégants */
+  .form-group {
+    @apply mb-6;
+  }
+
+  .form-label {
+    @apply block font-semibold text-gray-700 mb-2 text-sm;
+  }
+
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl text-base bg-white/80 backdrop-blur-sm transition-all duration-200;
+  }
+
+  .form-input:focus {
+    @apply outline-none border-blue-500 shadow-lg bg-white;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  }
+
+  .form-input::placeholder {
+    @apply text-gray-400;
+  }
+
+  /* Navigation moderne */
+  .navbar {
+    @apply bg-white/80 backdrop-blur-xl border-b border-white/20 sticky top-0 z-50;
+  }
+
+  .nav-link {
+    @apply text-gray-600 no-underline font-medium px-3 py-2 rounded-lg transition-all duration-200;
+  }
+
+  .nav-link:hover {
+    @apply text-blue-600 bg-blue-50;
+  }
+
+  .nav-link.active {
+    @apply text-blue-700 bg-blue-100;
+  }
+
+  /* Sidebar moderne */
+  .sidebar {
+    @apply bg-white/90 backdrop-blur-xl border-r border-white/20 h-screen sticky top-0;
+  }
+
+  .sidebar-nav {
+    @apply p-6;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-4 px-4 py-3 rounded-xl text-gray-600 no-underline font-medium transition-all duration-200 mb-1;
+  }
+
+  .sidebar-item:hover {
+    @apply bg-blue-50 text-blue-700 translate-x-1;
+  }
+
+  .sidebar-item.active {
+    background: linear-gradient(135deg, var(--eval-primary-100), var(--eval-primary-50));
+    @apply text-blue-800 shadow-sm;
+  }
+
+  /* Métriques et statistiques */
+  .metric-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    @apply backdrop-blur-xl border border-white/30 rounded-2xl p-6 relative overflow-hidden transition-all duration-300;
+  }
+
+  .metric-card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-1;
+    background: linear-gradient(90deg, var(--eval-primary-500), var(--eval-secondary-500));
+  }
+
+  .metric-card:hover {
+    @apply -translate-y-0.5 shadow-xl;
+  }
+
+  .metric-value {
+    @apply text-4xl font-extrabold leading-none;
+    background: linear-gradient(135deg, var(--eval-primary-600), var(--eval-secondary-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .metric-label {
+    @apply text-gray-600 font-medium mb-2;
+  }
+
+  .metric-change {
+    @apply text-sm font-semibold flex items-center gap-1 mt-2;
+  }
+
+  .metric-change.positive {
+    @apply text-emerald-600;
+  }
+
+  .metric-change.negative {
+    @apply text-red-600;
+  }
+
+  /* Badges et tags */
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-semibold uppercase tracking-wide;
+  }
+
+  .badge-primary {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .badge-secondary {
+    @apply bg-purple-100 text-purple-800;
+  }
+
+  .badge-success {
+    @apply bg-emerald-100 text-emerald-800;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 text-amber-800;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+
+  /* Utilitaires */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--eval-primary-600), var(--eval-secondary-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--eval-primary-50) 0%, var(--eval-secondary-50) 100%);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@layer utilities {
+  /* Animations et micro-interactions */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-fade-in-scale {
+    animation: fadeInScale 0.4s ease-out;
+  }
+
+  .loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Scrollbar personnalisée */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-lg;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+
+  /* Focus visible pour l'accessibilité */
+  .focus-visible:focus-visible {
+    @apply outline-2 outline-blue-500 outline-offset-2;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .text-display-2xl {
+    @apply text-4xl;
+  }
+  
+  .text-display-xl {
+    @apply text-3xl;
+  }
+  
+  .btn {
+    @apply px-4 py-2;
+  }
+  
+  .card-body {
+    @apply p-4;
+  }
+  
+  .metric-card {
+    @apply p-4;
+  }
+  
+  .metric-value {
+    @apply text-3xl;
+  }
+}
+

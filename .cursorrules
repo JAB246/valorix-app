@@ -1,0 +1,198 @@
+# Valorix Project Intelligence
+
+## Project Context
+Valorix is a professional business valuation SaaS application that combines AI analysis, financial calculations, and blockchain certification. The app must maintain a premium, trustworthy feel while being accessible to non-financial users.
+
+## Critical Implementation Paths
+
+### Authentication Flow
+- Always use Supabase Auth with JWT tokens
+- 2FA is mandatory for paid plans
+- Session timeout: 30 min for free, configurable for paid
+- Remember to clear all local data on logout
+
+### Data Security
+- Never store sensitive financial data in localStorage
+- All API calls must include proper auth headers
+- Use Row Level Security (RLS) on all Supabase tables
+- Financial calculations happen server-side only
+
+### Supabase Specific Rules
+- Views in Supabase must NOT use SECURITY DEFINER property
+- Always enable RLS policies for user data isolation
+- Use `.eq('user_id', userId)` in all queries
+- Prefer Supabase realtime for live updates over polling
+
+### UI/UX Patterns
+- Primary color: #6366F1 (Indigo-600)
+- Always use Shadcn/ui components, never raw HTML
+- Loading states are mandatory for all async operations
+- Error messages must be actionable, not technical
+
+### Performance Requirements
+- Initial bundle must be < 200KB gzipped
+- Use React.lazy() for all route components
+- Images must be WebP with JPEG fallback
+- Implement virtual scrolling for lists > 50 items
+
+## Code Patterns to Follow
+
+### Component Structure
+```jsx
+// Always destructure props
+export const Component = ({ prop1, prop2 }) => {
+  // Group related state
+  const [formData, setFormData] = useState({});
+  
+  // Custom hooks at top
+  const { user } = useAuth();
+  
+  // Effects after hooks
+  useEffect(() => {}, []);
+  
+  // Handlers before return
+  const handleSubmit = () => {};
+  
+  // Early returns for loading/error
+  if (loading) return <LoadingSpinner />;
+  
+  // Main render
+  return <div>...</div>;
+};
+```
+
+### API Calls Pattern
+```javascript
+// Always use try-catch with proper error handling
+const fetchData = async () => {
+  try {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('table')
+      .select()
+      .eq('user_id', user.id);
+      
+    if (error) throw error;
+    
+    setData(data);
+  } catch (error) {
+    console.error('Error:', error);
+    toast.error('Une erreur est survenue');
+  } finally {
+    setLoading(false);
+  }
+};
+```
+
+### Form Validation
+- Always use Zod schemas with react-hook-form
+- Show inline validation errors immediately
+- Disable submit button during submission
+- Show success feedback after actions
+
+## User Preferences
+
+### Code Style
+- Prefer explicit over implicit
+- Comment complex business logic
+- Use French for UI text, English for code
+- Format numbers with French locale
+
+### Workflow Patterns
+- Test on Chrome, Firefox, Safari before marking complete
+- Always check mobile view for new features
+- Run build before committing to check for errors
+- Update progress.md after completing features
+
+## Known Challenges
+
+### Browser Compatibility
+- Safari needs -webkit prefixes for some animations
+- Firefox has issues with backdrop-filter
+- IE11 support required for enterprise clients
+
+### Performance Bottlenecks
+- Dashboard with >1000 evaluations needs pagination
+- Chart libraries re-render too often, use memo
+- PDF generation blocks UI, use web worker
+
+### Integration Quirks
+- Stripe webhooks need retry logic
+- Pennylane API has 60 req/min limit
+- Blockchain service times out after 30s
+
+## Evolution Decisions
+
+### Why Supabase over Firebase
+- Better PostgreSQL features for financial data
+- Row Level Security critical for multi-tenant
+- Cheaper at scale for our use case
+
+### Why Shadcn/ui over MUI
+- Smaller bundle size
+- More customizable for our brand
+- Better TypeScript support
+- Owns the code, no vendor lock-in
+
+### Why Vite over CRA/Next.js
+- Faster development builds
+- Better tree-shaking
+- No SSR complexity needed
+- Simpler deployment
+
+## Testing Strategy
+
+### What to Test
+- All financial calculations
+- Authentication flows
+- Payment processing
+- Data exports
+- API integrations
+
+### What NOT to Test
+- Shadcn/ui components (already tested)
+- Simple display components
+- Third-party libraries
+- Style changes
+
+## Deployment Checklist
+
+Before deploying:
+- [ ] Run full test suite
+- [ ] Check bundle size < 200KB
+- [ ] Test on all browsers
+- [ ] Verify env variables
+- [ ] Update version in package.json
+- [ ] Tag release in git
+- [ ] Update progress.md
+
+## Common Fixes
+
+### "Connection Refused" Error
+1. Check if dev server is running
+2. Clear browser cache
+3. Check for port conflicts
+4. Restart Vite
+
+### Styling Not Applied
+1. Check Tailwind classes are valid
+2. Ensure CSS imports in main.jsx
+3. Clear .cache folder
+4. Rebuild CSS
+
+### Auth Issues
+1. Check Supabase service role key
+2. Verify RLS policies
+3. Clear auth cookies
+4. Check token expiration
+
+## AI Assistant Context
+
+When working on Valorix:
+1. Prioritize security and performance
+2. Maintain consistent French UI copy
+3. Follow established patterns exactly
+4. Test edge cases for financial data
+5. Consider non-technical users always
+
+Remember: This is a financial tool where accuracy and trust are paramount. Every decision should reinforce reliability and professionalism. 

@@ -1,0 +1,405 @@
+/* CSS Global Valorix - Design System Intégré avec Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* Variables CSS du Design System Valorix */
+:root {
+  /* Couleurs primaires */
+  --valorix-primary-50: #eff6ff;
+  --valorix-primary-100: #dbeafe;
+  --valorix-primary-200: #bfdbfe;
+  --valorix-primary-300: #93c5fd;
+  --valorix-primary-400: #60a5fa;
+  --valorix-primary-500: #3b82f6;
+  --valorix-primary-600: #2563eb;
+  --valorix-primary-700: #1d4ed8;
+  --valorix-primary-800: #1e40af;
+  --valorix-primary-900: #1e3a8a;
+
+  /* Couleurs secondaires */
+  --valorix-secondary-50: #faf5ff;
+  --valorix-secondary-100: #f3e8ff;
+  --valorix-secondary-200: #e9d5ff;
+  --valorix-secondary-300: #d8b4fe;
+  --valorix-secondary-400: #c084fc;
+  --valorix-secondary-500: #a855f7;
+  --valorix-secondary-600: #9333ea;
+  --valorix-secondary-700: #7c3aed;
+  --valorix-secondary-800: #6b21a8;
+  --valorix-secondary-900: #581c87;
+
+  /* Couleurs neutres */
+  --valorix-neutral-0: #ffffff;
+  --valorix-neutral-50: #f9fafb;
+  --valorix-neutral-100: #f3f4f6;
+  --valorix-neutral-200: #e5e7eb;
+  --valorix-neutral-300: #d1d5db;
+  --valorix-neutral-400: #9ca3af;
+  --valorix-neutral-500: #6b7280;
+  --valorix-neutral-600: #4b5563;
+  --valorix-neutral-700: #374151;
+  --valorix-neutral-800: #1f2937;
+  --valorix-neutral-900: #111827;
+  --valorix-neutral-950: #030712;
+
+  /* Couleurs sémantiques */
+  --valorix-success: #16a34a;
+  --valorix-warning: #d97706;
+  --valorix-error: #dc2626;
+  --valorix-info: #2563eb;
+
+  /* Espacements */
+  --valorix-spacing-xs: 0.25rem;   /* 4px */
+  --valorix-spacing-sm: 0.5rem;    /* 8px */
+  --valorix-spacing-md: 1rem;      /* 16px */
+  --valorix-spacing-lg: 1.5rem;    /* 24px */
+  --valorix-spacing-xl: 2rem;      /* 32px */
+  --valorix-spacing-2xl: 3rem;     /* 48px */
+  --valorix-spacing-3xl: 4rem;     /* 64px */
+
+  /* Rayons de bordure */
+  --valorix-radius-sm: 0.25rem;    /* 4px */
+  --valorix-radius-md: 0.5rem;     /* 8px */
+  --valorix-radius-lg: 0.75rem;    /* 12px */
+  --valorix-radius-xl: 1rem;       /* 16px */
+  --valorix-radius-2xl: 1.5rem;    /* 24px */
+  --valorix-radius-full: 9999px;
+
+  /* Ombres */
+  --valorix-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --valorix-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --valorix-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --valorix-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --valorix-shadow-valorix: 0 8px 32px -8px rgb(37 99 235 / 0.3);
+
+  /* Transitions */
+  --valorix-transition-fast: 150ms ease-in-out;
+  --valorix-transition-normal: 200ms ease-in-out;
+  --valorix-transition-slow: 300ms ease-in-out;
+
+  /* Z-index */
+  --valorix-z-dropdown: 1000;
+  --valorix-z-sticky: 1100;
+  --valorix-z-modal: 1400;
+  --valorix-z-toast: 1700;
+  --valorix-z-tooltip: 1800;
+
+  /* Fonts */
+  --valorix-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --valorix-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+}
+
+/* Thème sombre */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --valorix-neutral-0: #030712;
+    --valorix-neutral-50: #111827;
+    --valorix-neutral-100: #1f2937;
+    --valorix-neutral-200: #374151;
+    --valorix-neutral-300: #4b5563;
+    --valorix-neutral-400: #6b7280;
+    --valorix-neutral-500: #9ca3af;
+    --valorix-neutral-600: #d1d5db;
+    --valorix-neutral-700: #e5e7eb;
+    --valorix-neutral-800: #f3f4f6;
+    --valorix-neutral-900: #f9fafb;
+    --valorix-neutral-950: #ffffff;
+  }
+}
+
+/* Styles de base */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+body {
+  font-family: var(--valorix-font-sans);
+  line-height: 1.5;
+  color: var(--valorix-neutral-700);
+  background-color: var(--valorix-neutral-0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Améliorations d'accessibilité */
+*:focus {
+  outline: 2px solid var(--valorix-primary-600);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Respect des préférences utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Support du high contrast */
+@media (prefers-contrast: high) {
+  :root {
+    --valorix-primary-600: #0000ff;
+    --valorix-neutral-700: #000000;
+    --valorix-neutral-0: #ffffff;
+  }
+}
+
+/* Animations CSS personnalisées */
+@keyframes valorix-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes valorix-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes valorix-slide-up {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes valorix-slide-down {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes valorix-scale-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes valorix-shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Classes utilitaires personnalisées */
+.valorix-fade-in {
+  animation: valorix-fade-in var(--valorix-transition-normal);
+}
+
+.valorix-fade-out {
+  animation: valorix-fade-out var(--valorix-transition-normal);
+}
+
+.valorix-slide-up {
+  animation: valorix-slide-up var(--valorix-transition-normal);
+}
+
+.valorix-slide-down {
+  animation: valorix-slide-down var(--valorix-transition-normal);
+}
+
+.valorix-scale-in {
+  animation: valorix-scale-in var(--valorix-transition-fast);
+}
+
+/* Gradient Valorix signature */
+.valorix-gradient {
+  background: linear-gradient(135deg, var(--valorix-primary-600) 0%, var(--valorix-secondary-600) 50%, var(--valorix-primary-600) 100%);
+}
+
+.valorix-gradient-text {
+  background: linear-gradient(135deg, var(--valorix-primary-600) 0%, var(--valorix-secondary-600) 50%, var(--valorix-primary-600) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Skeleton loading */
+.valorix-skeleton {
+  background: linear-gradient(90deg, var(--valorix-neutral-200) 0%, var(--valorix-neutral-100) 50%, var(--valorix-neutral-200) 100%);
+  background-size: 200px 100%;
+  animation: valorix-shimmer 1.5s infinite;
+}
+
+/* Scrollbar personnalisé */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--valorix-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--valorix-neutral-400);
+  border-radius: var(--valorix-radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--valorix-neutral-500);
+}
+
+/* Sélection de texte */
+::selection {
+  background-color: var(--valorix-primary-200);
+  color: var(--valorix-primary-900);
+}
+
+::-moz-selection {
+  background-color: var(--valorix-primary-200);
+  color: var(--valorix-primary-900);
+}
+
+/* Focus ring personnalisé pour Valorix */
+.valorix-focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.valorix-focus-ring:focus {
+  outline: 2px solid var(--valorix-primary-600);
+  outline-offset: 2px;
+}
+
+.valorix-focus-ring-inset {
+  outline: 2px solid transparent;
+}
+
+.valorix-focus-ring-inset:focus {
+  outline: 2px solid var(--valorix-primary-600);
+  outline-offset: -2px;
+}
+
+/* Container responsive Valorix */
+.valorix-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--valorix-spacing-md);
+  padding-right: var(--valorix-spacing-md);
+}
+
+@media (min-width: 640px) {
+  .valorix-container {
+    padding-left: var(--valorix-spacing-lg);
+    padding-right: var(--valorix-spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .valorix-container {
+    padding-left: var(--valorix-spacing-xl);
+    padding-right: var(--valorix-spacing-xl);
+  }
+}
+
+/* Section spacing Valorix */
+.valorix-section {
+  padding-top: var(--valorix-spacing-2xl);
+  padding-bottom: var(--valorix-spacing-2xl);
+}
+
+@media (min-width: 640px) {
+  .valorix-section {
+    padding-top: var(--valorix-spacing-3xl);
+    padding-bottom: var(--valorix-spacing-3xl);
+  }
+}
+
+/* Grille responsive */
+.valorix-grid {
+  display: grid;
+  gap: var(--valorix-spacing-lg);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .valorix-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .valorix-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .valorix-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* États interactifs optimisés */
+.valorix-interactive {
+  transition: all var(--valorix-transition-normal);
+  cursor: pointer;
+}
+
+.valorix-interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--valorix-shadow-lg);
+}
+
+.valorix-interactive:active {
+  transform: translateY(0);
+}
+
+/* Print styles */
+@media print {
+  .valorix-no-print {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black !important;
+    background: white !important;
+  }
+  
+  .valorix-gradient-text {
+    -webkit-text-fill-color: black !important;
+    background: none !important;
+  }
+}
